@@ -1,0 +1,14 @@
+Documentation-URL = https://docs.aws.amazon.com/codedeploy/latest/userguide/codedeploy-agent-operations-install-ubuntu.html
+
+sudo apt update
+sudo apt install wget
+sudo apt install ruby-full wget
+cd /home/ubuntu
+
+wget https://bucket-name.s3.region-identifier.amazonaws.com/latestv2/install
+
+chmod +x ./install
+sudo ./install auto
+
+systemctl status codedeploy-agent
+systemctl start codedeploy-agent   # if error

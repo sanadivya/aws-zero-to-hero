@@ -4,7 +4,7 @@ env:
   parameter-store:
     DOCKER_REGISTRY_USERNAME: /myapp/docker-credentials/username
     DOCKER_REGISTRY_PASSWORD: /myapp/docker-credentials/password
-    DOCKER_REGISTRY_URL: /myapp/docker-registry/url
+    DOCKER_REGISTRY_URL: /myapp/docker-credentials/url
 phases:
   install:
     runtime-versions:
@@ -24,7 +24,13 @@ phases:
   post_build:
     commands:
       - echo "Build completed successfully!"
+# artifacts:
+#   files:
+#     - '**/*'
+#   base-directory: ../simple-python-app
 artifacts:
   files:
-    - '**/*'
-  base-directory: ../simple-python-app
+    - appspec.yml
+    - scripts/**/*
+  base-directory: deployment
+  discard-paths: no
